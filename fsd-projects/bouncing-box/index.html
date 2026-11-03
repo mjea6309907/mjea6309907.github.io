@@ -29,7 +29,7 @@
 
 <body class="board">
   <!-- HTML for the box -->
-  <div class="box">?</div>
+  <div class="box">0</div>
 
   <script>
     (function () {
@@ -70,7 +70,9 @@
       //////////////////////////////////////////////////////////////////
 
       // TODO 2 - Variable declarations
-
+var positionX = 0;
+var points = 0;
+var speed = 10;
 
 
 
@@ -82,18 +84,19 @@
        */
 
       function update() {
-        moveBoxTo(boardWidth);
- var positionX = += 10;
-    moveBoxTo(positionX);
-}
+        moveBoxTo(positionX);
+    positionX = positionX + speed; 
 
-
-
-
-
-
-
+if (positionX > boardWidth) {
+    speed = speed * -1;
     }
+if (positionX < 0) {
+    speed *= -1;
+    
+ }
+      }
+      
+
 
         /**
          * This Function will be called each time the box is clicked.
@@ -103,16 +106,10 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
+positionX = 0;
+points = points + 1;
+speed = 3 * points + 10;
+changeBoxText(points);
 
-
-
-
-    }
-
-
-        
-      }) ();
-  </script>
-</body>
-
-</html>
+}
+})();
